@@ -2,15 +2,20 @@ package com.jivan.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jivan.pojo.Student;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 public class StudentController 
 {
-	private List<Student> stud=new ArrayList<>(List.of(
+	private List<Student> studs=new ArrayList<>(List.of(
 			new Student(1, "Jivan", 22, "jivan@example.com", "Spring Boot"),
 			new Student(2, "Amit", 23, "amit@example.com", "ReactJS"),
 			new Student(3, "Ravi", 21, "ravi@example.com", "Python")));
@@ -19,8 +24,25 @@ public class StudentController
 	@GetMapping("/students")
 	public List<Student> getAllStudent()
 	{
-		return stud;
+		return studs;
 		
 	}
+	
+	
+	  @GetMapping("/csrf-token")
+	    public CsrfToken csrfToken(HttpServletRequest request) {
+	        return (CsrfToken) request.getAttribute(CsrfToken.class.getName());
+	    }
+	
+	@PostMapping("/students")
+	public Student addNewStudent(@RequestBody Student stu) 
+	{
+		studs.add(stu);
+		return stu;
+	
+	}
+	
+	
+	
 
 }
