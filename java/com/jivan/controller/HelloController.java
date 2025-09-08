@@ -12,7 +12,7 @@ public class HelloController
 	public String greet(HttpServletRequest request ) 
 	{
 		
-	return "jivan to Home page"+request.getSession().getId();	
+	return "jivan to Home page "+request.getSession().getId();	
 	}
 
 }
