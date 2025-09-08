@@ -29,7 +29,7 @@ public class UserPrinciple implements UserDetails
 
 	@Override
 	public String getUsername() {
-		return user.getName();
+		return user.getUserName();
 	}
 	
 

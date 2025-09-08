@@ -6,6 +6,6 @@ import com.jivan.pojo.Users;
 public interface UserRepo extends JpaRepository<Users, Integer> 
 {
 
-Users findByUserName(String nameName);
+Users findByUserName(String userName);
 
 }

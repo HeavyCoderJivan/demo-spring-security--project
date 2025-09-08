@@ -20,10 +20,10 @@ public class MyUserDeatailsService implements UserDetailsService
 	
 	
 	@Override
-	public UserDetails loadUserByUsername(String nameName) throws UsernameNotFoundException 
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException 
 	{
 		
-		Users user=userRepo.findByUserName(nameName);
+		Users user=userRepo.findByUserName(userName);
 		
 		if(user==null)
 		{
